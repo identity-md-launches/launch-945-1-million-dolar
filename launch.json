@@ -1,0 +1,25 @@
+{
+  "kind": "custom_token",
+  "token": {
+    "contract": "Token",
+    "name": "1 Million Dolar",
+    "symbol": "1MD",
+    "decimals": 18,
+    "constructorArgs": [],
+    "totalSupply": "1000000000000000000000000000"
+  },
+  "contracts": [
+    {
+      "contract": "TokenFactory",
+      "constructorArgs": []
+    }
+  ],
+  "pool": {
+    "pairedCurrency": "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7",
+    "fee": 3000,
+    "tickSpacing": 60,
+    "initialPrice": "129702091929298906150570304"
+  },
+  "economics": {"poolBps":8400,"initialMarketCapWei":"2680000000000000000000","remainderTo":"0x70bcbde387539d95ffe6d43edbf7c6aa2da87a09"},
+  "notes": "Token mints 1,000,000,000 tokens with 18 decimals once to msg.sender in its argument-free constructor. Its immutable deployer records that caller and grants no administrative privileges. Transfers use the standard ERC-20 behavior without fees. TokenFactory is a separate, permissionless application with an argument-free constructor that preserves the launch token's supply and balances. Its createToken(recipient) function creates an independent Token whose deployer is TokenFactory, records the creator, and forwards that new token's entire supply to the recipient. Deploying another TokenFactory changes the deployer recorded by tokens subsequently created through it; each existing token's deployer remains immutable. No initialization calls are required. The pool uses the specified paired currency, a 0.3% fee and tick spacing 60. initialPrice is a provenance reference: floor(sqrt(initialMarketCapWei / totalSupply) * 2^96), assuming Token is currency0. The deployer derives the opening price from the supplied economics and totalSupply using the deployed currency ordering."
+}
